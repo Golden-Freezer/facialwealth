@@ -15,8 +15,14 @@
 
         <title>Hello, world!</title>
         <link rel="stylesheet" href="style.css" />
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+        <script
+            type="text/javascript"
+            src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fe894e262563416"
+        ></script>
         
         <meta name="naver-site-verification" content="600e04da1dad5b55924d93ef75e8780a580b3758" />
+        
     </head>
 
     <body>
@@ -85,102 +91,40 @@
                 />
                 <div class="drag-text">
                     <img src="img/free-icon-double-up-arrow-56902.svg" class="mt-5 pt-2 upload" />
-                    <h3 class="mt-5 pb-5 upload-text">Drag and drop a file or select add Image</h3>
+                    <div>
+                        아이콘 제작자
+                        <a href="https://www.flaticon.com/kr/authors/freepik" title="Freepik"
+                            >Freepik</a
+                        >
+                        from
+                        <a href="https://www.flaticon.com/kr/" title="Flaticon">www.flaticon.com</a>
+                    </div>
+
+                    <h3 class="mt-5 pb-5 upload-text">
+                        Drag and drop a file <br />or select add Image
+                    </h3>
                 </div>
             </div>
             <div class="file-upload-content">
                 <img class="file-upload-image" id="face-image" src="#" alt="your image" />
-                <div id="loading" class="animated bounce" style="display: none;">
+                <div id="loading" class="animated bounce">
                     <div class="spinner-border" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
                     <p class="text-center">AI is analyzing your facial wealth.</p>
                 </div>
-                <p class="result-messege"></p>
-                <div id="label-container"></div>
-                <div id="label-container" class="d-flex flex-column justify-content-around">
-                    <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">A first class</div>
-                        <div class="bar-container position-relative container">
-                            <div class="bear-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center bear-bar"
-                                style="width: 100%;"
-                            >
-                                <span class="d-block percent-text">100%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">Second place</div>
-                        <div class="bar-container position-relative container">
-                            <div class="dinosaur-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center dinosaur-bar"
-                                style="width: 2%;"
-                            >
-                                <span class="d-block percent-text">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">third to fifth place</div>
-                        <div class="bar-container position-relative container">
-                            <div class="rabbit-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center rabbit-bar"
-                                style="width: 2%;"
-                            >
-                                <span class="d-block percent-text">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">6-10th place</div>
-                        <div class="bar-container position-relative container">
-                            <div class="cat-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center cat-bar"
-                                style="width: 2%;"
-                            >
-                                <span class="d-block percent-text">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">11-20th place</div>
-                        <div class="bar-container position-relative container">
-                            <div class="dog-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center dog-bar"
-                                style="width: 2%;"
-                            >
-                                <span class="d-block percent-text">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="d-flex">
-                        <div class="animal-label d-flex align-items-center">The rest</div>
-                        <div class="bar-container position-relative container">
-                            <div class="dog-box"></div>
-                            <div
-                                class="d-flex justify-content-center align-items-center dog-bar"
-                                style="width: 2%;"
-                            >
-                                <span class="d-block percent-text">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <p class="result-message"></p>
+                <div id="label-container" class="d-flex flex-column justify-content-around"></div>
                 <div class="image-title-wrap">
+                    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+                    <div class="addthis_inline_share_toolbox"></div>
+
                     <button type="button" onclick="removeUpload()" class="remove-image">
                         Remove <span class="image-title">Uploaded Image</span>
                     </button>
                 </div>
             </div>
         </div>
-        <div id="webcam-container"></div>
-
         <div id="disqus_thread"></div>
         <script>
             /**
@@ -233,10 +177,9 @@
 
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
-
+                        $('#loading').show();
                         $('.file-upload-image').attr('src', e.target.result);
                         $('.file-upload-content').show();
-
                         $('.image-title').html(input.files[0].name);
                     };
 
@@ -244,6 +187,7 @@
                     init().then(() => {
                         console.log('hello');
                         predict();
+                        $('#loading').hide();
                     });
                 } else {
                     removeUpload();
@@ -282,50 +226,98 @@
                 // Note: the pose library adds "tmImage" object to your window (window.tmImage)
                 model = await tmImage.load(modelURL, metadataURL);
                 maxPredictions = model.getTotalClasses();
-
                 labelContainer = document.getElementById('label-container');
                 for (let i = 0; i < maxPredictions; i++) {
                     // and class labels
-                    labelContainer.appendChild(document.createElement('div'));
+                    var element = document.createElement('div');
+                    element.classList.add('d-flex');
+                    labelContainer.appendChild(element);
                 }
             }
 
-            // run the webcam image through the image model
             async function predict() {
                 // predict can take in an image, video or canvas html element
                 var image = document.getElementById('face-image');
                 const prediction = await model.predict(image, false);
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
                 console.log(prediction[0].className);
-                var resultMessege;
+                var resultTitle;
                 switch (prediction[0].className) {
                     case 'A first class':
-                        resultMessege = "Oh, my God!! You're NO.1";
+                        resultTitle = "Oh, my God!! You're NO.1";
                         break;
                     case 'Second place':
-                        resultMessege = "What a shame. You're NO.2";
+                        resultTitle = "What a shame. You're NO.2";
                         break;
                     case 'third to fifth place':
-                        resultMessege = "Wow! You're in third and fifth place";
+                        resultTitle = "Wow! You're in third and fifth place";
                         break;
-                    case '6-10th place':
-                        resultMessege = "Oh, But you're still in the top 10";
+                    case 'The top ten':
+                        resultTitle = "Oh, But you're still in the top 10";
                         break;
-                    case '11-20th place':
-                        resultMessege = 'Top 20 in the world!';
+                    case 'The top twenty':
+                        resultTitle = 'Top 20 in the world!';
                         break;
                     case 'The rest':
-                        resultMessege = "From 21st place, we're all in one bundle";
+                        resultTitle = "From 21st place, we're all in one bundle";
                         break;
                     default:
-                        resultMessege = 'not human';
+                        resultTitle = 'not human';
                 }
-                $('.result-messege').html(resultMessege);
-
+                var title =
+                    "<div class='" +
+                    prediction[0].className +
+                    "-forbse-title pt-2 pb-2'>" +
+                    resultTitle +
+                    '</div>';
+                $('.result-message').html(title);
+                var barWidth;
                 for (let i = 0; i < maxPredictions; i++) {
-                    const classPrediction =
-                        prediction[i].className + ': ' + prediction[i].probability.toFixed(2);
-                    labelContainer.childNodes[i].innerHTML = classPrediction;
+                    if (prediction[i].probability.toFixed(2) > 0.1) {
+                        barWidth = Math.round(prediction[i].probability.toFixed(2) * 100) + '%';
+                    } else if (prediction[i].probability.toFixed(2) >= 0.01) {
+                        barWidth = '4%';
+                    } else {
+                        barWidth = '2%';
+                    }
+                    var labelTitle;
+                    switch (prediction[i].className) {
+                        case 'A first class':
+                            labelTitle = 'A first class';
+                            break;
+                        case 'Second place':
+                            labelTitle = 'Second place';
+                            break;
+                        case 'third to fifth place':
+                            labelTitle = 'third to fifth place';
+                            break;
+                        case 'The top ten':
+                            labelTitle = 'The top ten';
+                            break;
+                        case 'The top twenty':
+                            labelTitle = 'The top twenty';
+                            break;
+                        case 'The rest':
+                            labelTitle = 'The rest';
+                            break;
+                        default:
+                            labelTitle = 'not human';
+                    }
+                    var label =
+                        "<div class='animal-label d-flex align-items-center'>" +
+                        labelTitle +
+                        '</div>';
+                    var bar =
+                        "<div class='bar-container position-relative container'><div class='" +
+                        prediction[i].className +
+                        "-box'></div><div class='d-flex justify-content-center align-items-center " +
+                        prediction[i].className +
+                        "-bar' style='width: " +
+                        barWidth +
+                        "'><span class='d-block percent-text'>" +
+                        Math.round(prediction[i].probability.toFixed(2) * 100) +
+                        '%</span></div></div>';
+                    labelContainer.childNodes[i].innerHTML = label + bar;
                 }
             }
         </script>
