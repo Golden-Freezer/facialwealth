@@ -578,3 +578,8 @@ input:checked + label > .knob > i:before {
     margin-right: auto;
     margin-left: auto;
 }
+
+.ad-benner {
+    width: 320px;
+    margin: 0 auto;
+}
