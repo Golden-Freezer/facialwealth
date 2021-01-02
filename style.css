@@ -173,6 +173,12 @@ body {
     text-align: center;
     color: #35465d;
 }
+.title2 {
+     font-family: MaplestoryOTFBold;
+    line-height: 1.67;
+    text-align: center;
+    color: #ffd900;   
+}
 
 .subtitle {
     font-family: MaplestoryOTFBold;
