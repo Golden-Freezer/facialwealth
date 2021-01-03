@@ -110,11 +110,18 @@
         </nav>
         <section class="section">
             <h1 class="title">
-                내 얼굴의 재력  <span class="title2"> "쩐의 얼굴"
-            </span>
+                내 얼굴의 재력 <span class="title2"> "쩐의 얼굴" </span>
                 <p class="mt-1 title3">Ranking Of the World's Wealth In My Face</p>
-             <a href='http://besucherzaehler.co'></a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=6e978946071f0f11ecd2bd4c7f0e479f501518e8'></script>
-<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/779751/t/9"></script> <span class="title3">번째 접속자입니다.</span>
+                <a href="http://besucherzaehler.co"></a>
+                <script
+                    type="text/javascript"
+                    src="https://www.freevisitorcounters.com/auth.php?id=6e978946071f0f11ecd2bd4c7f0e479f501518e8"
+                ></script>
+                <script
+                    type="text/javascript"
+                    src="https://www.freevisitorcounters.com/en/home/counter/779751/t/9"
+                ></script>
+                <span class="title3">번째 접속자입니다.</span>
             </h1>
             <h2 class="subtitle"></h2>
         </section>
@@ -153,7 +160,7 @@
                     <div class="spinner-border" role="status">
                         <span class="sr-only">Loading...</span>
                     </div>
-                    <p class="text-center">AI is analyzing your facial wealth.</p>
+                    <p class="text-center">AI가 당신의 얼굴로 재력을 알아보는 중입니다.</p>
                 </div>
                 <p class="result-message"></p>
                 <div id="label-container" class="d-flex flex-column justify-content-around"></div>
@@ -203,7 +210,7 @@
                 async
             ></script>
             <ins
-                class= "kakao_ad_area"
+                class="kakao_ad_area"
                 style="display: none;"
                 data-ad-unit="DAN-OAjftMGhrbKKUmn0"
                 data-ad-width="320"
@@ -329,7 +336,6 @@
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-
                     reader.onload = function (e) {
                         $('.image-upload-wrap').hide();
                         $('#loading').show();
@@ -339,7 +345,7 @@
                     };
 
                     reader.readAsDataURL(input.files[0]);
-                    init().then(() => {
+                    init().then(function () {
                         console.log('hello');
                         predict();
                         $('#loading').hide();
@@ -396,36 +402,59 @@
                 const prediction = await model.predict(image, false);
                 prediction.sort((a, b) => parseFloat(b.probability) - parseFloat(a.probability));
                 console.log(prediction[0].className);
-                var resultTitle;
+                var resultTitle, resultExplain, resultCeleb;
                 switch (prediction[0].className) {
                     case 'A first class':
-                        resultTitle = "Oh, my God!! You're NO.1";
+                        resultTitle = '세상에!! 당신이 바로 세계 부자 1등?!';
+                        resultExplain = '1위 : 아마존 제프베조스';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'Second place':
-                        resultTitle = "What a shame. You're NO.2";
+                        resultTitle =
+                            '아쉬워 말아요!! 아쉬워 말아요!! 2등!! 2등!! 왜 두번 나오는거지?? 왜 두번 나오는거지?';
+                        resultExplain = '2위 : MICROSOFT 빌게이츠';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'third to fifth place':
-                        resultTitle = "Wow! You're in third and fifth place";
+                        resultTitle =
+                            '대단해요!! 당신은 3등일까 4등일까5등일까?! 기분좋게 3등 드릴게!';
+                        resultExplain =
+                            '3위:LVMH(루이비통 모에 헤네시), 4등:버크셔 해서웨이, 5등:오라클';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'The top ten':
-                        resultTitle = "Oh, But you're still in the top 10";
+                        resultTitle = '와우! 당신은 10등 이내!';
+                        resultExplain =
+                            '6위:자라, 7위:페이스북, 8-10위:월마켓';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'The top twenty':
-                        resultTitle = 'Top 20 in the world!';
+                        resultTitle = '그래도 세계에서 20등 안쪽!';
+                        resultExplain =
+                            '11위:마이크로소프트, 12위:텔레콤, 13-14위:구글, 15위:오라클, 16위:블룸버그, 17위:알리바바, 18-19위:Koch Industries, 20위:텐센트';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'The rest':
-                        resultTitle = "From 21st place, we're all in one bundle";
+                        resultTitle = '사람이 맞다면 당신은 100위 안에 속해 있을겁니다 ^-^';
+                        resultExplain = '';
+                        resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     default:
                         resultTitle = 'not human';
+                        resultExplain = '';
+                        resultCeleb = '';
                 }
+
                 var title =
                     "<div class='" +
                     prediction[0].className +
-                    "-forbse-title pt-2 pb-2'>" +
+                    "-forbse-title'>" +
                     resultTitle +
                     '</div>';
-                $('.result-message').html(title);
+                var explain = "<div class='forbse-explain pt-2'>" + resultExplain + '</div>';
+                var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
+                $('.result-message').html(title + explain + celeb);
+
                 var barWidth;
                 for (let i = 0; i < maxPredictions; i++) {
                     if (prediction[i].probability.toFixed(2) > 0.1) {
@@ -438,22 +467,22 @@
                     var labelTitle;
                     switch (prediction[i].className) {
                         case 'A first class':
-                            labelTitle = 'A first class';
+                            labelTitle = '세계 1위';
                             break;
                         case 'Second place':
-                            labelTitle = 'Second place';
+                            labelTitle = '세계 2위';
                             break;
                         case 'third to fifth place':
-                            labelTitle = 'third to fifth place';
+                            labelTitle = '세계 3위 - 5위';
                             break;
                         case 'The top ten':
-                            labelTitle = 'The top ten';
+                            labelTitle = '세계 6위 - 10위';
                             break;
                         case 'The top twenty':
-                            labelTitle = 'The top twenty';
+                            labelTitle = '세계 11위 - 20위';
                             break;
                         case 'The rest':
-                            labelTitle = 'The rest';
+                            labelTitle = '나머지';
                             break;
                         default:
                             labelTitle = 'not human';
@@ -478,10 +507,7 @@
         </script>
     </body>
     <!-- Copyright (c) 2020 by Aaron Vanston (https://codepen.io/aaronvanston/pen/yNYOXR)
-
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. -->
 </html>
