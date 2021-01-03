@@ -13,8 +13,8 @@ body {
     /* width: 914px; */
     /* height: 50vw; */
     border-radius: 10px;
-    border: solid 1.5px #f6f7fa;
-    background-color: #f6f7fa;
+    border: solid 1.5px #ffffff;
+    background-color:#ffffff;
 }
 
 .file-upload-btn {
@@ -25,7 +25,7 @@ body {
   border: none;
   padding: 10px;
   border-radius: 4px;
-  border-bottom: 4px solid #15824B;
+  border-bottom: 4px solid #d9ffcc;
   transition: all .2s ease;
   outline: none;
   text-transform: uppercase;
@@ -65,7 +65,7 @@ body {
   position: relative;
   object-fit: contain;
   border-radius: 30px;
-  border: outset 10px #b3ff99;
+  border: outset 10px #edfce9;
   background-color: #ffffff;
   margin: 0 auto;
 }
@@ -76,7 +76,7 @@ body {
   position: relative;
   object-fit: contain;
   border-radius: 30px;
-  border: inset 10px #b3ff99;
+  border: inset 10px #d9ffcc;
   background-color: #ffffff;
   margin: 0 auto;
 }
@@ -148,7 +148,7 @@ body {
 
 .nav-distance {
     padding: 2.1% 7.7%;
-    background-color: #d9ffcc;
+    background-color: #edfce9;
 }
 
 .navbar-brand .navbar-brand {
@@ -159,7 +159,7 @@ body {
 }
 
 .navbar-light .navbar-toggler{
-    border-color: #d9ffcc;
+    border-color: #edfce9;
 }
 
 .section {
