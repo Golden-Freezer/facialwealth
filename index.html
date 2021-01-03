@@ -169,7 +169,7 @@
                     <div class="addthis_inline_share_toolbox"></div>
 
                     <button type="button" onclick="removeUpload()" class="remove-image">
-                        Remove <span class="image-title">Uploaded Image</span>
+                        RETRY
                     </button>
                 </div>
             </div>
@@ -423,13 +423,12 @@
                         resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'The top ten':
-                        resultTitle = '와우! 당신은 10등 이내!';
-                        resultExplain =
-                            '6위:자라, 7위:페이스북, 8-10위:월마켓';
+                        resultTitle = '와우! 월드 클레스 in 10위!';
+                        resultExplain = '6위:자라, 7위:페이스북, 8-10위:월마켓';
                         resultCeleb = '2020년12월 31일 FORBSE 기준';
                         break;
                     case 'The top twenty':
-                        resultTitle = '그래도 세계에서 20등 안쪽!';
+                        resultTitle = '월드 클레스 in 20!!';
                         resultExplain =
                             '11위:마이크로소프트, 12위:텔레콤, 13-14위:구글, 15위:오라클, 16위:블룸버그, 17위:알리바바, 18-19위:Koch Industries, 20위:텐센트';
                         resultCeleb = '2020년12월 31일 FORBSE 기준';
@@ -448,11 +447,16 @@
                 var title =
                     "<div class='" +
                     prediction[0].className +
-                    "-forbse-title'>" +
+                    "-forbse-title pt-2 pb-4'>" +
                     resultTitle +
                     '</div>';
-                var explain = "<div class='forbse-explain pt-2'>" + resultExplain + '</div>';
-                var celeb = "<div class='" + prediction[0].className + "-animal-celeb pt-2 pb-2'>" + resultCeleb + "</div>"
+                var explain = "<div class='forbse-explain pt-2 pb-2'>" + resultExplain + '</div>';
+                var celeb =
+                    "<div class='" +
+                    prediction[0].className +
+                    "-forbse-celeb pt-2 pb-5'>" +
+                    resultCeleb +
+                    '</div>';
                 $('.result-message').html(title + explain + celeb);
 
                 var barWidth;
@@ -488,7 +492,7 @@
                             labelTitle = 'not human';
                     }
                     var label =
-                        "<div class='animal-label d-flex align-items-center'>" +
+                        "<div class='FORBSE-label d-flex align-items-center'>" +
                         labelTitle +
                         '</div>';
                     var bar =
