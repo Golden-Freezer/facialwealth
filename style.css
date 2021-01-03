@@ -62,23 +62,21 @@ body {
 
 .image-upload-wrap {
   width: 70%;
-  border: 4px dashed #1FB264;
   position: relative;
   object-fit: contain;
-  border-radius: 10px;
-  border: dashed 1.5px #35465d;
+  border-radius: 30px;
+  border: outset 10px #b3ff99;
   background-color: #ffffff;
   margin: 0 auto;
 }
 
 .image-dropping,
 .image-upload-wrap:hover {
-    width: 70%;
-  border: 4px dashed #1FB264;
+  width: 70%;
   position: relative;
   object-fit: contain;
-  border-radius: 10px;
-  border: dashed 1.5px #35465d;
+  border-radius: 30px;
+  border: inset 10px #b3ff99;
   background-color: #ffffff;
   margin: 0 auto;
 }
@@ -150,6 +148,7 @@ body {
 
 .nav-distance {
     padding: 2.1% 7.7%;
+    background-color: #d9ffcc;
 }
 
 .navbar-brand .navbar-brand {
@@ -160,7 +159,7 @@ body {
 }
 
 .navbar-light .navbar-toggler{
-    border-color: #ffffff;
+    border-color: #d9ffcc;
 }
 
 .section {
@@ -177,7 +176,15 @@ body {
      font-family: MaplestoryOTFBold;
     line-height: 1.67;
     text-align: center;
-    color: #ffd900;   
+    color: #ffd61a;
+    text-shadow: 1 1 2px #35465d;
+}
+.title3 {
+     font-family: MaplestoryOTFBold;
+    font-size : 50%;
+    line-height: 2;
+    text-align: center;
+    color: #35465d;   
 }
 
 .subtitle {
@@ -579,6 +586,7 @@ input:checked + label > .knob > i:before {
 
 .container {
     width: 100%;
+    background: #ffffff;
     padding-right: 15px;
     padding-left: 15px;
     margin-right: auto;
