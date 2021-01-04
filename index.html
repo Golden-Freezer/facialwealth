@@ -50,10 +50,10 @@
 
         <link rel="stylesheet" href="style.css" />
         <!-- Go to www.addthis.com/dashboard to customize your tools -->
-        <!--<script
+        <script
             type="text/javascript"
             src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5fe894e262563416"
-        ></script>//-->
+        ></script>
 
         <meta name="naver-site-verification" content="600e04da1dad5b55924d93ef75e8780a580b3758" />
         <meta name="naver-site-verification" content="8fd14a0bccb07545ecc620a68cefe4ebe35f08c4" />
@@ -74,7 +74,6 @@
             custom-element="amp-auto-ads"
             src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"
         ></script>
-        <script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
     </head>
 
     <body>
@@ -170,53 +169,8 @@
                 <div id="label-container" class="d-flex flex-column justify-content-around"></div>
                 <div class="image-title-wrap">
                     <!-- Go to www.addthis.com/dashboard to customize your tools -->
-                    <!--<div class="addthis_inline_share_toolbox"></div>-->
-                    <div>
-                        <a id="kakao-link-btn" href="javascript:sendLink()"
-                            ><img
-                                src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png"
-                        /></a>
-                    </div>
-                    <script type="text/javascript">
-                                              Kakao.init('5373ccf62de2cd909eb19e8146f3b92f'); // 초기화
+                    <div> class="addthis_inline_share_toolbox"></div>
 
-                                             function sendLink() {
-                          Kakao.Link.sendDefault({
-                              container: '#kakao-link-btn',
-                              objectType: 'feed',
-                              content: {
-                                  title: $('meta[property="og:title"]').attr( 'content' ),
-                                  description: $('meta[name="description"]').attr('content'),
-                                  imageUrl: $('meta[property="og:image"]').attr('content'),
-                                  link: {
-                                      mobileWebUrl: 'https://rowwimp.shop',
-                                      webUrl: 'https://rowwimp.shop'
-                                       }
-                            },
-                            social: {
-                              likeCount: 286,
-                              commentCount: 45,
-                              sharedCount: 845
-                            },
-                            buttons: [
-                              {
-                                title: '웹으로 보기',
-                                link: {
-                                  mobileWebUrl: 'https://rowwimp.shop',
-                                  webUrl: 'https://rowwimp.shop'
-                                }
-                              },
-                              {
-                                title: '앱으로 보기',
-                                link: {
-                                  mobileWebUrl: 'https://rowwimp.shop',
-                                  webUrl: 'https://rowwimp.shop'
-                                }
-                              }
-                            ]
-                          });
-                        //]]>
-                    </script>
                     <button type="button" onclick="removeUpload()" class="remove-image">
                         RETRY
                     </button>
